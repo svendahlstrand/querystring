@@ -11,6 +11,10 @@ describe('QueryString', function() {
     expect(queryString.raw).toEqual(search);
   });
 
+  it('should be able to reload the document with a new query string', function() {
+    // TODO
+  });
+
   describe('present method', function() {
     it('should know when thers no query string', function() {
       queryString.raw = '';

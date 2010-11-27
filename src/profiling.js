@@ -17,4 +17,8 @@ function QueryString() {
 
     this.raw = queryString + keyValuePair;
   }
+
+  this.reload = function() {
+    window.location.search = this.raw;
+  }
 };
