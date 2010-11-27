@@ -22,7 +22,8 @@ function QueryString() {
   this.set = function(name, value) {
     /* Remove previously set parameter(s).
        TODO: Is this the best way? */
-    var re = /([?&]profiling=(true|false))/ig;
+    var re = '[?&]' + name + '=([^&]*)';
+    re = new RegExp(re, 'ig');
 
     this.raw = this.raw.replace(re, '');
     this.raw = this.raw.replace(/^&/, '?');

@@ -31,25 +31,27 @@ describe('QueryString', function() {
 
   describe('includes method', function() {
     it('should return false when theres no query string', function() {
-      expect(queryString.includes('profiling')).toBe(false);
+      queryString.raw = '';
+
+      expect(queryString.includes('foo')).toBe(false);
     });
 
     it('should return false when theres no parameter', function() {
-      queryString.raw = '?foo=bar&baz=profiling';
+      queryString.raw = '?bar=foo';
 
-      expect(queryString.includes('profiling')).toBe(false);
+      expect(queryString.includes('foo')).toBe(false);
     });
 
     it('should return true when theres a parameter', function() {
-      queryString.raw = '?profiling=true';
+      queryString.raw = '?foo=bar';
 
-      expect(queryString.includes('profiling')).toBe(true);
+      expect(queryString.includes('foo')).toBe(true);
     });
 
     it('should work with multiple parameters', function() {
-      queryString.raw = '?foo=bar&profiling=true';
+      queryString.raw = '?foo=bar&baz=fubar';
 
-      expect(queryString.includes('profiling')).toBe(true);
+      expect(queryString.includes('baz')).toBe(true);
     });
   });
 
@@ -57,7 +59,7 @@ describe('QueryString', function() {
     it('should return null if parameter does not exists', function() {
       queryString.raw = '';
 
-      expect(queryString.get('profiling')).toBe(null);
+      expect(queryString.get('foo')).toBe(null);
     });
 
     it('should return the value', function() {
@@ -71,26 +73,26 @@ describe('QueryString', function() {
     it('should set a new query string when theres no one there', function() {
       queryString.raw = '';
 
-      queryString.set('profiling', 'true');
+      queryString.set('foo', 'bar');
 
-      expect(queryString.raw).toEqual('?profiling=true');
+      expect(queryString.raw).toEqual('?foo=bar');
     });
 
     it('should append if theres a query string present', function() {
       var originalQueryString = '?foo=bar';
       queryString.raw = originalQueryString;
 
-      queryString.set('profiling', 'true');
+      queryString.set('baz', 'fubar');
 
-      expect(queryString.raw).toEqual(originalQueryString + '&profiling=true');
+      expect(queryString.raw).toEqual(originalQueryString + '&baz=fubar');
     });
 
     it('should replace if theres a parameter with the same name', function() {
-      queryString.raw = '?profiling=false';
+      queryString.raw = '?foo=bar';
 
-      queryString.set('profiling', 'true');
+      queryString.set('foo', 'baz');
 
-      expect(queryString.raw).toEqual('?profiling=true');
+      expect(queryString.raw).toEqual('?foo=baz');
     });
   });
 });
