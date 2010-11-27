@@ -70,5 +70,13 @@ describe('QueryString', function() {
 
       expect(queryString.raw).toEqual(originalQueryString + '&profiling=true');
     });
+
+    it('should replace if theres a parameter with the same name', function() {
+      queryString.raw = '?profiling=false';
+
+      queryString.set('profiling', 'true');
+
+      expect(queryString.raw).toEqual('?profiling=true');
+    });
   });
 });
