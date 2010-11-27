@@ -1,0 +1,18 @@
+h1. query-string
+
+A native JavaScript library to handle query strings.
+
+h2. Example usage (Firebug session)
+
+<pre><code>
+>>> queryString = new QueryString();
+Object { raw="?hello=world"}
+>>> queryString.raw;
+"?hello=world"
+>>> queryString.set('foo', 'bar');
+>>> queryString.raw;
+"?hello=world&foo=bar"
+
+// To actually reload the page use:
+>>> queryString.reload();
+</code></pre>
