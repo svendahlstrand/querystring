@@ -1,7 +1,7 @@
 function QueryString() {
   this.raw = window.location.search;
 
-  this.exists = function() {
+  this.present = function() {
     return (this.raw.length > 0)
   }
 
@@ -13,7 +13,7 @@ function QueryString() {
 
   this.set = function(name, value) {
     var keyValuePair = name + '=' + value;
-    var queryString = this.exists() ? (this.raw + '&') : '?';
+    var queryString = this.present() ? (this.raw + '&') : '?';
 
     this.raw = queryString + keyValuePair;
   }

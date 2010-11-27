@@ -11,17 +11,17 @@ describe('QueryString', function() {
     expect(queryString.raw).toEqual(search);
   });
 
-  describe('exists method', function() {
+  describe('present method', function() {
     it('should know when thers no query string', function() {
       queryString.raw = '';
 
-      expect(queryString.exists()).toBe(false);
+      expect(queryString.present()).toBe(false);
     });
 
     it('should know when ther are a query string', function() {
       queryString.raw = '?foo=bar';
 
-      expect(queryString.exists()).toBe(true);
+      expect(queryString.present()).toBe(true);
     });
   });
 
