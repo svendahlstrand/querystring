@@ -10,4 +10,8 @@ function QueryString() {
 
     return (this.raw.search(re) != -1);
   }
+
+  this.set = function(name, value) {
+    this.raw = '?' + name + '=' + value;
+  }
 };

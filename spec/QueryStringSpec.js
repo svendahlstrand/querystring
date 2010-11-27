@@ -48,4 +48,14 @@ describe('QueryString', function() {
       expect(queryString.includes('profiling')).toBe(true);
     });
   });
+
+  describe('set method', function() {
+    it('should set a new query string when theres no one there', function() {
+      queryString.raw = '';
+
+      queryString.set('profiling', 'true');
+
+      expect(queryString.raw).toEqual('?profiling=true');
+    });
+  });
 });
