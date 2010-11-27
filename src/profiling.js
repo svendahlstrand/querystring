@@ -12,6 +12,9 @@ function QueryString() {
   }
 
   this.set = function(name, value) {
-    this.raw = '?' + name + '=' + value;
+    var keyValuePair = name + '=' + value;
+    var queryString = this.exists() ? (this.raw + '&') : '?';
+
+    this.raw = queryString + keyValuePair;
   }
 };

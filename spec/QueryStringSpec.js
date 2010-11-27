@@ -57,5 +57,14 @@ describe('QueryString', function() {
 
       expect(queryString.raw).toEqual('?profiling=true');
     });
+
+    it('should append if theres a query string present', function() {
+      var originalQueryString = '?foo=bar';
+      queryString.raw = originalQueryString;
+
+      queryString.set('profiling', 'true');
+
+      expect(queryString.raw).toEqual(originalQueryString + '&profiling=true');
+    });
   });
 });
