@@ -11,6 +11,20 @@ describe('QueryString', function() {
     expect(queryString.raw).toEqual(search);
   });
 
+  describe('exists method', function() {
+    it('should know when thers no query string', function() {
+      queryString.raw = '';
+
+      expect(queryString.exists()).toBe(false);
+    });
+
+    it('should know when ther are a query string', function() {
+      queryString.raw = '?foo=bar';
+
+      expect(queryString.exists()).toBe(true);
+    });
+  });
+
   describe('includes method', function() {
     it('should return false when theres no query string', function() {
       expect(queryString.includes('profiling')).toBe(false);

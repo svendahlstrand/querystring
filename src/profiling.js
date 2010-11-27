@@ -1,10 +1,13 @@
 function QueryString() {
   this.raw = window.location.search;
 
+  this.exists = function() {
+    return (this.raw.length > 0)
+  }
+
   this.includes = function(name) {
     re = "[?&]" + name;
-    if (this.raw.search(re) != -1) { return true; }
 
-    return false;
+    return (this.raw.search(re) != -1);
   }
 };
