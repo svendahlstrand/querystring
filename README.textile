@@ -6,10 +6,12 @@ h2. Example usage (Firebug session)
 
 <pre><code>
 >>> queryString = new QueryString();
-Object { raw="?hello=world"}
+Object
 >>> queryString.raw;
 "?hello=world"
 >>> queryString.set('foo', 'bar');
+>>> queryString.get('foo');
+"bar"
 >>> queryString.raw;
 "?hello=world&foo=bar"
 
