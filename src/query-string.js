@@ -11,6 +11,14 @@ function QueryString() {
     return (this.raw.search(re) != -1);
   };
 
+  this.get = function(name) {
+    if (!this.includes(name)) { return null; }
+
+    var re = '[?&]' + name + '=([^&]*)';
+
+    return this.raw.match(re)[1];
+  };
+
   this.set = function(name, value) {
     /* Remove previously set parameter(s).
        TODO: Is this the best way? */
