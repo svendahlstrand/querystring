@@ -6,7 +6,7 @@ function QueryString() {
   }
 
   this.includes = function(name) {
-    re = "[?&]" + name;
+    re = '[?&]' + name;
 
     return (this.raw.search(re) != -1);
   }
